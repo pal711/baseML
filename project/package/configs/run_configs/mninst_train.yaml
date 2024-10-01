@@ -1,0 +1,14 @@
+job_type: "train"
+dataset: "MNIST.MNISTData"
+model: 
+  model_name: "MNISTModel.MNISTFFN"
+  
+trainer:
+  trainer_name: trainers.SimpleTrainer.SimpleTrainer
+  trainer_params: 
+    epoches: 15
+    load_model_from_checkpoint: False
+    load_optimizer_from_checkpoint: False
+    lr: 0.01
+    batch_size: 64
+    save_dir: r"D:\git_repos\baseML\saved_models"
