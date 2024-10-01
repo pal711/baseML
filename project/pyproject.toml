@@ -1,3 +1,6 @@
+# there are different build systems which can be used
+# but setuptools is old one, we can use that
+
 [build-system]
 requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
@@ -5,6 +8,19 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "package"
 version = "0.0.1"
+requires-python = ">=3.12"
+readme = "README.md"
 
+# there are ways to specify dependencies in a
+# more specificway depending on OS
+dependencies = [
+  "pandas==2.2.3",
+  "numpy==2.1.1"
+]
+
+# to run a command in command line
+# like in this case
+# > package
+# command will execute and run below function
 [project.scripts]
 packagepy = "package.__main__:main"
