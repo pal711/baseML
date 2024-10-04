@@ -1,12 +1,6 @@
 import torch.nn as nn
 
 
-# # Hyperparameters
-# batch_size = 64
-# learning_rate = 0.001
-# num_epochs = 5
-
-
 class SimpleNN(nn.Module):
     def __init__(
             self, 
@@ -26,18 +20,18 @@ class SimpleNN(nn.Module):
             activation_functions
         )
 
-        self.linear_layers = nn.ModuleList(
-            [
-                act_func(nn.Linear(ip_dim, op_dim)) 
-                for ip_dim, op_dim, act_func in layer_details
-            ]
-        )
+        self.linear_layers = nn.ModuleList()
 
+        for ip_dim, op_dim, act_func in layer_details:
+            self.linear_layers.append(nn.Linear(ip_dim, op_dim))
+            self.linear_layers.append(act_func)
+        
         self.ip_dim = ip_dim
         self.op_dim = op_dim
         self.n_hidden_layers = n_hidden_layers
         self.hidden_layers_dims = hidden_layers_dims
 
     def forward(self, x):
-        x = self.linear_layers(x)
+        for i, l in enumerate(self.linear_layers):
+            x = l(x)
         return x

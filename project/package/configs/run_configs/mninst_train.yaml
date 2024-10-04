@@ -1,14 +1,21 @@
 job_type: "train"
-dataset: "MNIST.MNISTData"
+dataset: 
+  dataset_name: "MNISTData"
+  dataset_params:
+    storage_dir: D:\git_repos\baseML\datastore
+
 model: 
-  model_name: "MNISTModel.MNISTFFN"
+  model_name: "MNISTFFN"
+
+loss:
+    loss_name: CrossEntropyLoss
   
 trainer:
-  trainer_name: trainers.SimpleTrainer.SimpleTrainer
+  trainer_name: SimpleTrainer
   trainer_params: 
-    epoches: 15
+    epochs: 15
     load_model_from_checkpoint: False
     load_optimizer_from_checkpoint: False
-    lr: 0.01
+    lr: 0.001
     batch_size: 64
-    save_dir: r"D:\git_repos\baseML\saved_models"
+    save_dir: D:\git_repos\baseML\saved_models

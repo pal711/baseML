@@ -35,4 +35,4 @@ class MNISTData():
         pass
 
     def get_dataset(self):
-        return self.train_dataset, self.test_dataset
+        return self.train_dataset, None, self.test_dataset

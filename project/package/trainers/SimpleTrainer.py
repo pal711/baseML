@@ -72,7 +72,7 @@ class SimpleTrainer:
 
         return optimizer
     
-    def train(self, model, loss_criterion, train_dataset, val_dataset=None):
+    def run(self, model, loss_criterion, train_dataset, val_dataset=None):
         if self.load_model_from_checkpoint:
             model = self.__load_model_checkpoint(model)
             
