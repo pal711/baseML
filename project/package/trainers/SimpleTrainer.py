@@ -5,6 +5,13 @@ from torch.utils.data import DataLoader
 
 
 class SimpleTrainer:
+    """
+    The vanilla trainer. Trains a model saves the checkpoint at given
+    frequency interval. It can also load a model from a checkpoint 
+    and train it further
+    """
+
+    # supported optimizers are in below dictionary
     str_to_optimizer = {
         'adam': optim.Adam
     }

@@ -1,5 +1,22 @@
 import argparse
+import os
+import json
+import logging
+from logging.config import dictConfig
+
 from package.helpers import utils
+from package.helpers.test_logging import test123
+
+
+logging_path = r"project\package\configs\logging_config.json"
+assert os.path.exists(logging_path)
+
+with open(logging_path, 'r') as file:
+    dict_config = json.load(file)
+
+
+dictConfig(dict_config)
+logger = logging.getLogger(__name__)
 
 
 supported_jobs = [
@@ -28,6 +45,12 @@ def main():
         loss_config = config['loss']
         trainer_config = config['trainer']
 
+        # logging the values
+        logger.debug(f"dataset_name: {dataset_name}")
+        logger.debug(f"model_config: {model_config}")
+        logger.debug(f"loss_config: {loss_config}")
+        logger.debug(f"trainer_config: {trainer_config}")
+
         train_ds, val_ds, test_ds = utils.get_dataset(dataset_name)
         ml_model = utils.create_model(model_config)
         loss_func = utils.get_loss_func(loss_config)
@@ -39,7 +62,19 @@ def main():
             train_ds,
             val_ds
             )
-   
+    
+    elif job_type == "dataset_inference":
+        raise NotImplementedError
+
+    elif job_type == "webapp":
+        raise NotImplementedError
+    
+    else:
+        raise NotImplementedError
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        logger.exception(e)
+        raise e
