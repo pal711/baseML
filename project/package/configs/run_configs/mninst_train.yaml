@@ -13,7 +13,7 @@ loss:
 trainer:
   trainer_name: SimpleTrainer
   trainer_params: 
-    epochs: 15
+    epochs: 2
     load_model_from_checkpoint: False
     load_optimizer_from_checkpoint: False
     lr: 0.001
