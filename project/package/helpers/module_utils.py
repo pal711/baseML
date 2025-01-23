@@ -1,5 +1,4 @@
 from package.models.ListedModels import MODELS
-from package.trainers.ListedTrainers import TRAINERS
 from package.data.ListedDataset import DATASETS
 from package.losses.ListedLosses import LOSSES
 from package.optimizers.ListedOptimizers import OPTIMIZERS
@@ -29,33 +28,6 @@ def create_model(model_config: dict):
     
     model_obj = model_class(**model_params)
     return model_obj
-
-
-def create_trainer(trainer_config: dict):
-    """Returns a trainer object to train a model
-
-    Args:
-        trainer_config (dict): a dictionary containing 'trainer_name' and
-        'trainer_params' (optional)
-
-    Raises:
-        RuntimeError: If the class mentioned in 'trainer_name' is not listed in
-        package.trainers.ListedTrainers
-
-    Returns:
-        _type_: A trainer Object
-    """
-    trainer_name = trainer_config['trainer_name']
-    trainer_params = trainer_config.get('trainer_params')
-    if not trainer_params:
-        trainer_params = {}
-
-    trainer_cls = TRAINERS.get(trainer_name)
-    if not trainer_cls:
-        raise RuntimeError(f"{trainer_name} not listed in package.trainers.ListedTrainers")
-    
-    trainer_obj = trainer_cls(**trainer_params)
-    return trainer_obj
 
 
 def get_dataset(dataset_config):

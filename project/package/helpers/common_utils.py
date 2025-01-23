@@ -17,6 +17,16 @@ def read_yaml(yaml_path: str) -> dict:
     return d_obj
 
 
-def dataset_to_dataloader(dataset: Dataset, batch_size: int, shuffle: bool=False) -> DataLoader:
+def dataset_to_dataloader(dataset: Dataset, batch_size: int=16, shuffle: bool=False) -> DataLoader:
+    """converts a pytorch Dataset to DataLoader
+
+    Args:
+        dataset (Dataset): A pytorch Dataset
+        batch_size (int, optional): Batch size of resulted Dataloader. Defaults to 16.
+        shuffle (bool, optional): whether to suffle dataset records while loading in DataLoader. Defaults to False.
+
+    Returns:
+        DataLoader: the dataloader from Dataset
+    """
     dl = DataLoader(dataset, batch_size, shuffle=shuffle)
     return dl

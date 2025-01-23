@@ -1,0 +1,26 @@
+job_type: "train"
+  
+parameters:
+  dataset: 
+    dataset_name: "MNISTData"
+    dataset_params:
+      storage_dir: D:\git_repos\baseML\datastore
+  
+  model: 
+    model_name: "MNISTFFN"
+
+  loss:
+    loss_name: CrossEntropyLoss
+
+  optimizer:
+    optimizer_name: adam
+    optimizer_params:
+      lr: 0.001
+
+  batch_size: 64
+  epochs: 13
+  load_from_checkpoint: True
+  load_checkpoint_path: D:\git_repos\baseML\saved_models\MNISTFFN_ep12_train0.69_val0.73.pth
+  save_to_checkpoint: True
+  save_checkpoint_dir: D:\git_repos\baseML\saved_models
+  # save_frequency: 7
