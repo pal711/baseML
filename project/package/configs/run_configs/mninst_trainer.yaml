@@ -18,9 +18,9 @@ parameters:
       lr: 0.001
 
   batch_size: 64
-  epochs: 13
+  epochs: 14
   load_from_checkpoint: True
-  load_checkpoint_path: D:\git_repos\baseML\saved_models\MNISTFFN_ep12_train0.69_val0.73.pth
+  load_checkpoint_path: D:\git_repos\baseML\saved_models\MNISTFFN_ep13_train0.01087_val0.011389.pth
   save_to_checkpoint: True
   save_checkpoint_dir: D:\git_repos\baseML\saved_models
   # save_frequency: 7

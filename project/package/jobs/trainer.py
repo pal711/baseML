@@ -9,6 +9,9 @@ logger = logging.getLogger(__name__)
 
 
 class Trainer(JobBase):
+    """Trainer class takes care of training of a model.
+    For If your project uses a tool like Sphinx for generating documentation, you can provide long-form documentation in reStructuredText or Markdown files. Then you can use the autodoc extension of Sphinx to extract docstrings from your code automatically
+    """
     def __init__(
             self,
             config: dict,
@@ -135,7 +138,7 @@ class Trainer(JobBase):
         
 
     def __load_from_checkpoint(self):
-        checkpoint = torch.load(self.load_checkpoint_path)
+        checkpoint = torch.load(self.load_checkpoint_path, weights_only=True)
         return checkpoint
 
 
